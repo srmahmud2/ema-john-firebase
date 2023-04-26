@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 const SignUp = () => {
   const [error, setError] = useState("");
 
   const { createUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  // const location = useLocation();
+
+  // const from = location.state?.from?.pathname || "/";
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -31,6 +36,9 @@ const SignUp = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        form.reset();
+        navigate("/", { replace: true }); // signup er rpor directe home nite hole ei code
+        // navigate(from, { replace: true }); eta kaj korlo na. inventory theke sign up korte giye jodi niew user create korte sign up click kori, taholeo direct sign up click er moto behave kore home e niye ashe. othocho jawar kotha chilo inventory or order mane ja korte giye ami signup korechi.
       })
       .catch((error) => {
         setError(error.message); //set error e message shoho dite hobe

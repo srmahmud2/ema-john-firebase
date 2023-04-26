@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -21,6 +27,7 @@ const Login = () => {
         console.log(loggedUser);
         //success hole form reset kore dibo
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -45,12 +52,21 @@ const Login = () => {
           <div className="form-control">
             <label htmlFor="password">Password</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="password"
               placeholder="Your password"
               required
             />
+            <p
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+            >
+              <small>
+                {showPassword ? <span>Hide pass</span> : <span>Show pass</span>}
+              </small>
+            </p>
           </div>
           <div className="form-control">
             <button className="btn btn-submit" type="submit" value="">

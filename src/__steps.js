@@ -24,3 +24,27 @@
  * 1. ebar auth develop korbo
  * 2. fire base theke import { getAuth } from "firebase/auth"; copy kore AuthProvider.jsx upore paset korb.
  */
+
+/***
+ * - Hosting firebase -
+ * 1. one time per pc ei command dite hobe.
+ *  - npm install -g firebase-tools
+ * 2. firebase login er jonno, ei command o ek computer e jibone ekbar dile hoy.
+ *  - firebase login
+ *  - ekoi rokomo logouot koret firebase logout command dile hobe.
+ * 3. but ei command ta prottek project er jonno alada alda dite hobe. firebase init
+ * 2. proceed
+ * 3. Hosting Configure files for firebase hosting and set up github action
+ * 4. select existing project
+ * 5. slecet from the list carefully
+ * 6. which project as public directory vite use korle hobe dist, are createreactapp use korel hobe build. to amader ema-john project jechetu vite diye kora tai hobe dist.
+ * 7. er por single pae application hisabe korte chai kina seta dite hobe. ei project er khetre hobe yes.
+ * 8. erpor setu auto builds and deploy with github ei project e no dilam.
+ * 9. finally firebase init sesh holo
+ *
+ *
+ * - for everytime deply -
+ * 1. tar por jotobar deploy korbo tar jonno npm run build dite hobe. ba prottekbar deploy korar age nupm run build diye build kore nibo.
+ * 2. tarpor firebase deploy command dite hobe.
+ *
+ *  */
